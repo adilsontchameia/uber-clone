@@ -46,7 +46,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 30.0),
       child: ButtonApp(
-        onPressed: _con.login,
+        onPressed: _con.register,
         text: 'SingUp',
         color: utils.Colors.uberCloneColor,
         icon: Icons.arrow_forward_ios,
