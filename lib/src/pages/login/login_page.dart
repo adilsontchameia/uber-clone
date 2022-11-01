@@ -44,11 +44,14 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _textDontHaveAccount() {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 50.0),
-      child: const Text(
-        'Dont have account ?',
-        style: TextStyle(fontSize: 15.0, color: Colors.grey),
+    return GestureDetector(
+      onTap: _con.goToRegisterPage,
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 50.0),
+        child: const Text(
+          'Dont have account ?',
+          style: TextStyle(fontSize: 15.0, color: Colors.grey),
+        ),
       ),
     );
   }

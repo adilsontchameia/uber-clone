@@ -31,26 +31,15 @@ class _RegisterPageState extends State<RegisterPage> {
           child: Column(
             children: [
               _bannerApp(),
-              _textDescription(),
-              _textLogin(),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.15),
+              _textRegister(),
+              _textFieldUsername(),
               _textFieldEmail(),
               _textFieldPassword(),
+              _textFieldConfirmPassword(),
               _buttonLogin(),
-              _textDontHaveAccount(),
             ],
           ),
         ));
-  }
-
-  Widget _textDontHaveAccount() {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 50.0),
-      child: const Text(
-        'Dont have account ?',
-        style: TextStyle(fontSize: 15.0, color: Colors.grey),
-      ),
-    );
   }
 
   Widget _buttonLogin() {
@@ -58,23 +47,23 @@ class _RegisterPageState extends State<RegisterPage> {
       margin: const EdgeInsets.symmetric(horizontal: 30.0),
       child: ButtonApp(
         onPressed: _con.login,
-        text: 'Login',
+        text: 'SingUp',
         color: utils.Colors.uberCloneColor,
         icon: Icons.arrow_forward_ios,
       ),
     );
   }
 
-  Widget _textFieldPassword() {
+  Widget _textFieldUsername() {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 15.0),
+      margin: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
       child: TextField(
-        controller: _con.passwordController,
-        obscureText: true,
+        controller: _con.usernameController,
         decoration: const InputDecoration(
-          labelText: 'Insert Your Password',
+          hintText: 'Your Name',
+          labelText: 'User Name',
           suffixIcon: Icon(
-            Icons.lock_open_outlined,
+            Icons.person_outlined,
             color: utils.Colors.uberCloneColor,
           ),
         ),
@@ -99,30 +88,49 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  Widget _textLogin() {
+  Widget _textFieldPassword() {
     return Container(
-      alignment: Alignment.centerLeft,
-      margin: const EdgeInsets.symmetric(horizontal: 30.0),
-      child: const Text(
-        'Login',
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 27,
-          fontFamily: 'NambusSans',
+      margin: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 15.0),
+      child: TextField(
+        controller: _con.passwordController,
+        obscureText: true,
+        decoration: const InputDecoration(
+          labelText: 'Insert Your Password',
+          suffixIcon: Icon(
+            Icons.lock_open_outlined,
+            color: utils.Colors.uberCloneColor,
+          ),
         ),
       ),
     );
   }
 
-  Widget _textDescription() {
+  Widget _textFieldConfirmPassword() {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 15.0),
+      child: TextField(
+        controller: _con.confirmPasswordController,
+        obscureText: true,
+        decoration: const InputDecoration(
+          labelText: 'Confirm Your Password',
+          suffixIcon: Icon(
+            Icons.lock_open_outlined,
+            color: utils.Colors.uberCloneColor,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _textRegister() {
     return Container(
       alignment: Alignment.centerLeft,
-      margin: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
+      margin: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 15.0),
       child: const Text(
-        'Continuar com a sessao',
+        'SIGNUP',
         style: TextStyle(
-          color: Colors.black54,
-          fontSize: 24,
+          color: Colors.black,
+          fontSize: 25,
           fontFamily: 'NambusSans',
         ),
       ),

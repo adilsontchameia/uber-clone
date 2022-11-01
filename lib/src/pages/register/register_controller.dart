@@ -3,8 +3,10 @@ import 'package:uber_clone/src/providers/auth_provider.dart';
 
 class RegisterController {
   BuildContext? context;
-
+  //Controllers
+  TextEditingController usernameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   AuthProvider? _authProvider;
