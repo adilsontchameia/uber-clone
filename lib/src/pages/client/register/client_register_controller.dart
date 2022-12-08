@@ -65,9 +65,9 @@ class ClientRegisterController {
     _progressDialog!.show();
 
     try {
-      bool isRegister = await _authProvider!.register(email, password);
+      Object? isRegister = await _authProvider!.register(email, password);
 
-      if (isRegister) {
+      if (isRegister != null) {
         Client client = Client(
             id: _authProvider!.getUser().uid,
             email: _authProvider!.getUser().email,

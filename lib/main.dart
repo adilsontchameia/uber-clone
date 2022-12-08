@@ -37,7 +37,7 @@ class _MyAppState extends State<MyApp> {
         'home': (BuildContext context) => const HomePage(),
         'login': (BuildContext context) => const LoginPage(),
         'client/register': (BuildContext context) => ClientRegisterPage(),
-        'driver/register': (BuildContext context) => const DriverRegisterPage(),
+        'driver/register': (BuildContext context) => DriverRegisterPage(),
         'driver/map': (BuildContext context) => const DriverMapPage(),
         'client/map': (BuildContext context) => ClientMapPage(),
       },

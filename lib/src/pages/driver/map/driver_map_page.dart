@@ -26,7 +26,6 @@ class _DriverMapPageState extends State<DriverMapPage> {
 
   @override
   void dispose() {
-   
     super.dispose();
     //print('SE EJECUTO EL DISPOSE');
     _con.dispose();
@@ -73,7 +72,7 @@ class _DriverMapPageState extends State<DriverMapPage> {
               children: [
                 SizedBox(
                   child: Text(
-                    _con.driver.username ?? 'Nombre de usuario',
+                    _con.driver.username.toString(),
                     style: const TextStyle(
                         fontSize: 18,
                         color: Colors.black,
@@ -83,7 +82,7 @@ class _DriverMapPageState extends State<DriverMapPage> {
                 ),
                 SizedBox(
                   child: Text(
-                    _con.driver.email ?? 'Correo electronico',
+                    _con.driver.email.toString(),
                     style: TextStyle(
                         fontSize: 14,
                         color: Colors.grey[800],

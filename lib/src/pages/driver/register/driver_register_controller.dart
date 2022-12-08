@@ -27,13 +27,14 @@ class DriverRegisterController {
   DriverProvider? _driverProvider;
   ProgressDialog? _progressDialog;
 
-  Future? init(BuildContext context) {
+  Future init(BuildContext context) {
     this.context = context;
     _authProvider = AuthProvider();
     _driverProvider = DriverProvider();
     _progressDialog =
         MyProgressDialog.createProgressDialog(context, 'Espere un momento...');
-    return null;
+
+    return init(context);
   }
 
   void register() async {
@@ -81,9 +82,9 @@ class DriverRegisterController {
     _progressDialog!.show();
 
     try {
-      bool isRegister = await _authProvider!.register(email, password);
+      Object? isRegister = await _authProvider!.register(email, password);
 
-      if (isRegister) {
+      if (isRegister != null) {
         Driver driver = Driver(
             id: _authProvider!.getUser().uid,
             email: _authProvider!.getUser().email,

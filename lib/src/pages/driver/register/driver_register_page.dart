@@ -8,8 +8,6 @@ import '../../../widgets/button_app.dart';
 import 'driver_register_controller.dart';
 
 class DriverRegisterPage extends StatefulWidget {
-  const DriverRegisterPage({super.key});
-
   @override
   _DriverRegisterPageState createState() => _DriverRegisterPageState();
 }
@@ -19,6 +17,7 @@ class _DriverRegisterPageState extends State<DriverRegisterPage> {
 
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
     print('INIT STATE');
 

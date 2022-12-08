@@ -66,6 +66,9 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAox1K8TXxAH0kjY6M3jAIy1pJ_ENQtGpg" />
 
         <service
             android:name="com.google.firebase.components.ComponentDiscoveryService"

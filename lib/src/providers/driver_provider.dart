@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../models/driver.dart';
 
@@ -14,18 +15,21 @@ class DriverProvider {
 
     try {
       return _ref!.doc(driver.id).set(driver.toJson());
-    } catch (error) {
-      errorMessage = error.toString();
+    } on FirebaseAuthException catch (error) {
+      errorMessage = error.code;
     }
-
-    return Future.error(errorMessage);
+    if (errorMessage != null) {
+      return Future.error(errorMessage);
+    } else {
+      return create(driver);
+    }
   }
 
   Stream<DocumentSnapshot> getByIdStream(String id) {
     return _ref!.doc(id).snapshots(includeMetadataChanges: true);
   }
 
-  Future<Driver?> getById(String id) async {
+  Future<Driver> getById(String id) async {
     DocumentSnapshot document = await _ref!.doc(id).get();
 
     if (document.exists) {
@@ -33,6 +37,10 @@ class DriverProvider {
       return driver;
     }
 
-    return null;
+    return getById(id);
+  }
+
+  Future<void> update(Map<String, dynamic> data, String id) {
+    return _ref!.doc(id).update(data);
   }
 }

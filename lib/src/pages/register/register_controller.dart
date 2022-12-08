@@ -45,9 +45,9 @@ class RegisterController {
     print('Password: $password');
 
     try {
-      bool isRegistered = await _authProvider!.register(email, password);
+      Object? isRegistered = await _authProvider!.register(email, password);
       //Perguntar se fez login
-      if (isRegistered) {
+      if (isRegistered != null) {
         print('The user has sucessfully registered.');
       } else {
         print('The sign up process was failed.');

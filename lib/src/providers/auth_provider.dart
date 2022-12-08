@@ -25,7 +25,7 @@ class AuthProvider {
   void checkIfUserIsLogged(BuildContext context, String typeUser) {
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       // QUE EL USUARIO ESTA LOGEADO
-      if (typeUser != null) {
+      if (user != null) {
         if (typeUser == 'client') {
           Navigator.pushNamedAndRemoveUntil(
               context, 'client/map', (route) => false);
@@ -40,41 +40,38 @@ class AuthProvider {
     });
   }
 
-  Future<bool> login(String email, String password) async {
-    late String errorMessage;
+  Future<Object> login(String email, String password) async {
+    String errorMessage;
 
     try {
-      await _firebaseAuth!
+      return await _firebaseAuth!
           .signInWithEmailAndPassword(email: email, password: password);
-    } catch (error) {
-      print(error);
-      // CORREO INVALIDO
-      // PASSWORD INCORRECTO
-      // NO HAY CONEXION A INTERNET
-      errorMessage = error.toString();
+    } on FirebaseAuthException catch (error) {
+      errorMessage = error.code;
     }
-
-    return Future.error(errorMessage.toString());
+    if (errorMessage != null) {
+      return Future.error(errorMessage);
+    } else {
+      return true;
+    }
   }
 
-  Future<bool> register(String email, String password) async {
-    late String errorMessage;
-
+  Future<Object?> register(String email, String password) async {
+    String errorMessage;
     try {
-      await _firebaseAuth!
+      return await _firebaseAuth!
           .createUserWithEmailAndPassword(email: email, password: password);
-    } catch (error) {
-      print(error);
-      // CORREO INVALIDO
-      // PASSWORD INCORRECTO
-      // NO HAY CONEXION A INTERNET
-      errorMessage = error.toString();
+    } on FirebaseAuthException catch (error) {
+      errorMessage = error.code;
     }
-
-    return Future.error(errorMessage);
+    if (errorMessage != null) {
+      return Future.error(errorMessage);
+    } else {
+      return register;
+    }
   }
 
-  Future<Future<List<void>>> signOut() async {
+  Future<Future<List>> signOut() async {
     return Future.wait([_firebaseAuth!.signOut()]);
   }
 }

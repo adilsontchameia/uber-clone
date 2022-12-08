@@ -57,10 +57,10 @@ class LoginController {
     _progressDialog!.show();
 
     try {
-      bool isLogin = await _authProvider!.login(email, password);
+      Object isLogin = await _authProvider!.login(email, password);
       _progressDialog!.hide();
 
-      if (isLogin) {
+      if (isLogin != null) {
         print('El usuario esta logeado');
 
         if (_typeUser == 'client') {
@@ -98,7 +98,7 @@ class LoginController {
         //print('El usuario no se pudo autenticar');
       }
     } catch (error) {
-      utils.Snackbar.showSnackbar(context!, key, 'Error: $error');
+      utils.Snackbar.showSnackbar(context!, key, 'Error : $error');
       _progressDialog!.hide();
       //print('Error: $error');
     }

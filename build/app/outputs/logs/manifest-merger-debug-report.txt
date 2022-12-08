@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 application
-INJECTED from C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\android\app\src\main\AndroidManifest.xml:5:4-35:19
+INJECTED from C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\android\app\src\main\AndroidManifest.xml:5:4-38:19
 MERGED from [:firebase_auth] C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-15:19
 MERGED from [:firebase_auth] C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-15:19
 MERGED from [:cloud_firestore] C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-15:19
@@ -44,11 +44,11 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Ad
 	android:name
 		INJECTED from C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\android\app\src\main\AndroidManifest.xml
 manifest
-ADDED from C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\android\app\src\main\AndroidManifest.xml:1:1-36:12
-INJECTED from C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\android\app\src\main\AndroidManifest.xml:1:1-36:12
-INJECTED from C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\android\app\src\main\AndroidManifest.xml:1:1-36:12
-INJECTED from C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\android\app\src\main\AndroidManifest.xml:1:1-36:12
-MERGED from C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\android\app\src\main\AndroidManifest.xml:1:1-36:12
+ADDED from C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\android\app\src\main\AndroidManifest.xml:1:1-39:12
+INJECTED from C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\android\app\src\main\AndroidManifest.xml:1:1-39:12
+INJECTED from C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\android\app\src\main\AndroidManifest.xml:1:1-39:12
+INJECTED from C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\android\app\src\main\AndroidManifest.xml:1:1-39:12
+MERGED from C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\android\app\src\main\AndroidManifest.xml:1:1-39:12
 MERGED from [:shared_preferences_android] C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\build\shared_preferences_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:firebase_auth] C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-17:12
 MERGED from [:cloud_firestore] C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-17:12
@@ -105,11 +105,11 @@ INJECTED from C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\an
 		INJECTED from C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\android\app\src\debug\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\android\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\android\app\src\main\AndroidManifest.xml:1:1-36:12
+		ADDED from C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\android\app\src\main\AndroidManifest.xml:1:1-39:12
 		INJECTED from C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\android\app\src\debug\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\android\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\android\app\src\main\AndroidManifest.xml:1:1-36:12
+		ADDED from C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\android\app\src\main\AndroidManifest.xml:1:1-39:12
 		INJECTED from C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\android\app\src\debug\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Adilson Tchameia\Documents\flutter_projects\uber-clone\android\app\src\main\AndroidManifest.xml:1:11-69
