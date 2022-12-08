@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:progress_dialog/progress_dialog.dart';
+import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 import 'package:uber_clone/src/utils/snackbar.dart' as utils;
 
 import '../../models/client.dart';
@@ -73,7 +73,7 @@ class LoginController {
             Navigator.pushNamedAndRemoveUntil(
                 context!, 'client/map', (route) => false);
           } else {
-           // print('El cliente si es nulo');
+            // print('El cliente si es nulo');
             utils.Snackbar.showSnackbar(
                 context!, key, 'El usuario no es valido');
             await _authProvider!.signOut();

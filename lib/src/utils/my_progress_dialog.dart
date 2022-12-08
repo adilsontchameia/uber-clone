@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:progress_dialog/progress_dialog.dart';
+import 'package:progress_dialog_null_safe/progress_dialog_null_safe.dart';
 
 class MyProgressDialog {
   static ProgressDialog createProgressDialog(
       BuildContext context, String text) {
     ProgressDialog progressDialog = ProgressDialog(context,
-        type: ProgressDialogType.Normal, isDismissible: false, showLogs: false);
+        type: ProgressDialogType.normal, isDismissible: false, showLogs: false);
 
     progressDialog.style(
         message: text,

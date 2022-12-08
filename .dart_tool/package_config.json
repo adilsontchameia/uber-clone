@@ -308,10 +308,10 @@
       "languageVersion": "2.14"
     },
     {
-      "name": "progress_dialog",
-      "rootUri": "file:///C:/development/flutter/.pub-cache/hosted/pub.dartlang.org/progress_dialog-1.2.4",
+      "name": "progress_dialog_null_safe",
+      "rootUri": "file:///C:/development/flutter/.pub-cache/hosted/pub.dartlang.org/progress_dialog_null_safe-1.0.7",
       "packageUri": "lib/",
-      "languageVersion": "2.7"
+      "languageVersion": "2.12"
     },
     {
       "name": "rxdart",
@@ -446,7 +446,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2022-12-08T10:23:41.946041Z",
+  "generated": "2022-12-08T10:51:16.197783Z",
   "generator": "pub",
   "generatorVersion": "2.18.4"
 }

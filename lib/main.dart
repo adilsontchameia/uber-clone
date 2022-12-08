@@ -34,7 +34,7 @@ class _MyAppState extends State<MyApp> {
           appBarTheme: const AppBarTheme(elevation: 0),
           primaryColor: utils.Colors.uberCloneColor),
       routes: {
-        'home': (BuildContext context) => HomePage(),
+        'home': (BuildContext context) => const HomePage(),
         'login': (BuildContext context) => const LoginPage(),
         'client/register': (BuildContext context) => ClientRegisterPage(),
         'driver/register': (BuildContext context) => const DriverRegisterPage(),

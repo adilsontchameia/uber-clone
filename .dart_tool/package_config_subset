@@ -194,10 +194,10 @@ process
 2.14
 file:///C:/development/flutter/.pub-cache/hosted/pub.dartlang.org/process-4.2.4/
 file:///C:/development/flutter/.pub-cache/hosted/pub.dartlang.org/process-4.2.4/lib/
-progress_dialog
-2.7
-file:///C:/development/flutter/.pub-cache/hosted/pub.dartlang.org/progress_dialog-1.2.4/
-file:///C:/development/flutter/.pub-cache/hosted/pub.dartlang.org/progress_dialog-1.2.4/lib/
+progress_dialog_null_safe
+2.12
+file:///C:/development/flutter/.pub-cache/hosted/pub.dartlang.org/progress_dialog_null_safe-1.0.7/
+file:///C:/development/flutter/.pub-cache/hosted/pub.dartlang.org/progress_dialog_null_safe-1.0.7/lib/
 rxdart
 2.12
 file:///C:/development/flutter/.pub-cache/hosted/pub.dartlang.org/rxdart-0.26.0/

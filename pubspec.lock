@@ -352,13 +352,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.2.4"
-  progress_dialog:
+  progress_dialog_null_safe:
     dependency: "direct main"
     description:
-      name: progress_dialog
+      name: progress_dialog_null_safe
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.4"
+    version: "1.0.7"
   rxdart:
     dependency: transitive
     description:
