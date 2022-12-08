@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:progress_dialog/progress_dialog.dart';
-import 'package:uber_clone_flutter_udemy/src/models/client.dart';
-import 'package:uber_clone_flutter_udemy/src/models/driver.dart';
-import 'package:uber_clone_flutter_udemy/src/providers/auth_provider.dart';
-import 'package:uber_clone_flutter_udemy/src/providers/client_provider.dart';
-import 'package:uber_clone_flutter_udemy/src/providers/driver_provider.dart';
-import 'package:uber_clone_flutter_udemy/src/utils/my_progress_dialog.dart';
-import 'package:uber_clone_flutter_udemy/src/utils/snackbar.dart' as utils;
+import 'package:uber_clone/src/utils/snackbar.dart' as utils;
 
 import '../../../models/driver.dart';
+import '../../../providers/auth_provider.dart';
+import '../../../providers/driver_provider.dart';
+import '../../../utils/my_progress_dialog.dart';
 
 class DriverRegisterController {
-  BuildContext context;
+  BuildContext? context;
   GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
 
   TextEditingController usernameController = TextEditingController();
@@ -26,16 +23,17 @@ class DriverRegisterController {
   TextEditingController pin5Controller = TextEditingController();
   TextEditingController pin6Controller = TextEditingController();
 
-  AuthProvider _authProvider;
-  DriverProvider _driverProvider;
-  ProgressDialog _progressDialog;
+  AuthProvider? _authProvider;
+  DriverProvider? _driverProvider;
+  ProgressDialog? _progressDialog;
 
-  Future init(BuildContext context) {
+  Future? init(BuildContext context) {
     this.context = context;
     _authProvider = AuthProvider();
     _driverProvider = DriverProvider();
     _progressDialog =
         MyProgressDialog.createProgressDialog(context, 'Espere un momento...');
+    return null;
   }
 
   void register() async {
@@ -62,51 +60,52 @@ class DriverRegisterController {
         confirmPassword.isEmpty) {
       print('debes ingresar todos los campos');
       utils.Snackbar.showSnackbar(
-          context, key, 'Debes ingresar todos los campos');
+          context!, key, 'Debes ingresar todos los campos');
       return;
     }
 
     if (confirmPassword != password) {
       print('Las contraseñas no coinciden');
-      utils.Snackbar.showSnackbar(context, key, 'Las contraseñas no coinciden');
+      utils.Snackbar.showSnackbar(
+          context!, key, 'Las contraseñas no coinciden');
       return;
     }
 
     if (password.length < 6) {
       print('el password debe tener al menos 6 caracteres');
       utils.Snackbar.showSnackbar(
-          context, key, 'el password debe tener al menos 6 caracteres');
+          context!, key, 'el password debe tener al menos 6 caracteres');
       return;
     }
 
-    _progressDialog.show();
+    _progressDialog!.show();
 
     try {
-      bool isRegister = await _authProvider.register(email, password);
+      bool isRegister = await _authProvider!.register(email, password);
 
       if (isRegister) {
         Driver driver = Driver(
-            id: _authProvider.getUser().uid,
-            email: _authProvider.getUser().email,
+            id: _authProvider!.getUser().uid,
+            email: _authProvider!.getUser().email,
             username: username,
             password: password,
             plate: plate);
 
-        await _driverProvider.create(driver);
+        await _driverProvider!.create(driver);
 
-        _progressDialog.hide();
+        _progressDialog!.hide();
         Navigator.pushNamedAndRemoveUntil(
-            context, 'driver/map', (route) => false);
+            context!, 'driver/map', (route) => false);
         utils.Snackbar.showSnackbar(
-            context, key, 'El usuario se registro correctamente');
+            context!, key, 'El usuario se registro correctamente');
         print('El usuario se registro correctamente');
       } else {
-        _progressDialog.hide();
+        _progressDialog!.hide();
         print('El usuario no se pudo registrar');
       }
     } catch (error) {
-      _progressDialog.hide();
-      utils.Snackbar.showSnackbar(context, key, 'Error: $error');
+      _progressDialog!.hide();
+      utils.Snackbar.showSnackbar(context!, key, 'Error: $error');
       print('Error: $error');
     }
   }

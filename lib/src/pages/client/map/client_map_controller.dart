@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart' as location;
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:uber_clone/src/utils/snackbar.dart' as utils;
 
@@ -61,7 +62,7 @@ class ClientMapController {
     Stream<DocumentSnapshot> clientStream =
         _clientProvider!.getByIdStream(_authProvider!.getUser().uid);
     _clientInfoSubscription = clientStream.listen((DocumentSnapshot document) {
-      client = Client.fromJson(document.data());
+      client = Client.fromJson(document.data() as Map<String, dynamic> );
       refresh!();
     });
   }

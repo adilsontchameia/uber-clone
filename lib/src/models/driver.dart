@@ -6,18 +6,18 @@ String driverToJson(Driver data) => json.encode(data.toJson());
 
 class Driver {
   Driver({
-    required this.id,
-    required this.username,
-    required this.email,
-    required this.password,
-    required this.plate,
+    this.id,
+    this.username,
+    this.email,
+    this.password,
+    this.plate,
   });
 
-  String id;
-  String username;
-  String email;
-  String password;
-  String plate;
+  String? id;
+  String? username;
+  String? email;
+  String? password;
+  String? plate;
 
   factory Driver.fromJson(Map<String, dynamic> json) => Driver(
         id: json["id"],

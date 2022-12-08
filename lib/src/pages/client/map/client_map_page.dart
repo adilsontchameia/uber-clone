@@ -70,9 +70,9 @@ class _ClientMapPageState extends State<ClientMapPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
+                SizedBox(
                   child: Text(
-                    _con.client!.username ?? 'Nombre de usuario',
+                    _con.client!.username!,
                     style: const TextStyle(
                         fontSize: 18,
                         color: Colors.black,
@@ -80,9 +80,9 @@ class _ClientMapPageState extends State<ClientMapPage> {
                     maxLines: 1,
                   ),
                 ),
-                Container(
+                SizedBox(
                   child: Text(
-                    _con.client!.email ?? 'Correo electronico',
+                    _con.client!.email!,
                     style: TextStyle(
                         fontSize: 14,
                         color: Colors.grey[800],
