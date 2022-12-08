@@ -1,5 +1,7 @@
-import 'package:flutter/animation.dart';
+import 'package:flutter/material.dart';
 
 class Colors {
-  static const Color uberCloneColor = Color(0xFF25262C);
+
+  static const Color uberCloneColor = Color(0xFF222327);
+
 }
