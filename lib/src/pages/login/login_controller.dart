@@ -64,7 +64,7 @@ class LoginController {
         print('El usuario esta logeado');
 
         if (_typeUser == 'client') {
-          Client client =
+          Client? client =
               await _clientProvider!.getById(_authProvider!.getUser().uid);
           print('CLIENT: $client');
 
@@ -79,7 +79,7 @@ class LoginController {
             await _authProvider!.signOut();
           }
         } else if (_typeUser == 'driver') {
-          Driver driver =
+          Driver? driver =
               await _driverProvider!.getById(_authProvider!.getUser().uid);
           print('DRIVER: $driver');
 

@@ -23,7 +23,7 @@ class AuthProvider {
   }
 
   void checkIfUserIsLogged(BuildContext context, String typeUser) {
-    FirebaseAuth.instance.authStateChanges().listen((User user) {
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
       // QUE EL USUARIO ESTA LOGEADO
       if (typeUser != null) {
         if (typeUser == 'client') {
@@ -41,7 +41,7 @@ class AuthProvider {
   }
 
   Future<bool> login(String email, String password) async {
-    String errorMessage;
+    late String errorMessage;
 
     try {
       await _firebaseAuth!
@@ -54,11 +54,11 @@ class AuthProvider {
       errorMessage = error.toString();
     }
 
-    return Future.error(errorMessage);
+    return Future.error(errorMessage.toString());
   }
 
   Future<bool> register(String email, String password) async {
-    String errorMessage;
+    late String errorMessage;
 
     try {
       await _firebaseAuth!

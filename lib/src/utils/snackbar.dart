@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uber_clone_flutter_udemy/src/utils/colors.dart' as utils;
+import 'package:uber_clone/src/utils/colors.dart' as utils;
 
 class Snackbar {
   static void showSnackbar(
@@ -10,8 +10,9 @@ class Snackbar {
 
     FocusScope.of(context).requestFocus(FocusNode());
 
-    key.currentState?.removeCurrentSnackBar();
-    key.currentState!.showSnackBar(SnackBar(
+    //key.currentState?.removeCurrentSnackBar();
+    ScaffoldMessenger.of(context).removeCurrentSnackBar();
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text(
           text,
           textAlign: TextAlign.center,
