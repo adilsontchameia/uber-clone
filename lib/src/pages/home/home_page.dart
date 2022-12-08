@@ -5,6 +5,8 @@ import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -15,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    print('INIT STATE');
+    //print('INIT STATE');
 
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
       _con.init(context);

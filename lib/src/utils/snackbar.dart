@@ -4,7 +4,9 @@ import 'package:uber_clone/src/utils/colors.dart' as utils;
 class Snackbar {
   static void showSnackbar(
       BuildContext context, GlobalKey<ScaffoldState> key, String text) {
+    // ignore: unnecessary_null_comparison
     if (context == null) return;
+    // ignore: unnecessary_null_comparison
     if (key == null) return;
     if (key.currentState == null) return;
 

@@ -62,7 +62,7 @@ class ClientMapController {
     Stream<DocumentSnapshot> clientStream =
         _clientProvider!.getByIdStream(_authProvider!.getUser().uid);
     _clientInfoSubscription = clientStream.listen((DocumentSnapshot document) {
-      client = Client.fromJson(document.data() as Map<String, dynamic> );
+      client = Client.fromJson(document.data() as Map<String, dynamic>);
       refresh!();
     });
   }

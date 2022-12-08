@@ -18,10 +18,7 @@ class DriverProvider {
       errorMessage = error.toString();
     }
 
-    if (errorMessage != null) {
-      return Future.error(errorMessage);
-    }
-    return null;
+    return Future.error(errorMessage);
   }
 
   Stream<DocumentSnapshot> getByIdStream(String id) {

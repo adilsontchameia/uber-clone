@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-    print('INIT STATE');
+    //print('INIT STATE');
 
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
       _con.init(context);
@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    print('METODO BUILD');
+    //print('METODO BUILD');
 
     return Scaffold(
       key: _con.key,

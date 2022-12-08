@@ -14,14 +14,14 @@ final inputDecoration = InputDecoration(
 );
 
 class OTPFields extends StatefulWidget {
-  TextEditingController pin1;
-  TextEditingController pin2;
-  TextEditingController pin3;
-  TextEditingController pin4;
-  TextEditingController pin5;
-  TextEditingController pin6;
+  final TextEditingController pin1;
+  final TextEditingController pin2;
+  final TextEditingController pin3;
+  final TextEditingController pin4;
+  final TextEditingController pin5;
+  final TextEditingController pin6;
 
-  OTPFields({
+  const OTPFields({
     Key? key,
     required this.pin1,
     required this.pin2,

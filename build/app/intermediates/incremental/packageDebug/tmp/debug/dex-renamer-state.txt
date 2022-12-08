@@ -1,4 +1,0 @@
-#Tue Nov 01 13:31:21 WAT 2022
-base.0=C\:\\Users\\Adilson Tchameia\\Documents\\flutter_projects\\uber-clone\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-renamed.0=classes.dex
-path.0=classes.dex

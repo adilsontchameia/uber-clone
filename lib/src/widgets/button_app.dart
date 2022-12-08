@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:uber_clone/src/utils/colors.dart' as utils;
 
 class ButtonApp extends StatelessWidget {
-  Color color;
-  Color textColor;
-  String text;
-  IconData icon;
-  Function onPressed;
+  final Color color;
+  final Color textColor;
+  final String text;
+  final IconData icon;
+  final Function onPressed;
 
-  ButtonApp({
+  const ButtonApp({
     super.key,
     this.color = Colors.black,
     this.textColor = Colors.white,
