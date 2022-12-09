@@ -17,11 +17,11 @@ class ClientProvider {
     } catch (error) {
       errorMessage = error.toString();
     }
-
     if (errorMessage != null) {
       return Future.error(errorMessage);
+    } else {
+      return create(client);
     }
-    return null;
   }
 
   Stream<DocumentSnapshot> getByIdStream(String id) {
@@ -32,7 +32,8 @@ class ClientProvider {
     DocumentSnapshot document = await _ref!.doc(id).get();
 
     if (document.exists) {
-      Client client = Client.fromJson(document.data() as Map<String, dynamic>);
+      Client client =
+          Client.fromJson(document.data().toString() as Map<String, dynamic>);
       return client;
     }
 

@@ -72,7 +72,7 @@ class _DriverMapPageState extends State<DriverMapPage> {
               children: [
                 SizedBox(
                   child: Text(
-                    _con.driver.username.toString(),
+                    _con.driver.username!,
                     style: const TextStyle(
                         fontSize: 18,
                         color: Colors.black,
@@ -82,7 +82,7 @@ class _DriverMapPageState extends State<DriverMapPage> {
                 ),
                 SizedBox(
                   child: Text(
-                    _con.driver.email.toString(),
+                    _con.driver.email!,
                     style: TextStyle(
                         fontSize: 14,
                         color: Colors.grey[800],

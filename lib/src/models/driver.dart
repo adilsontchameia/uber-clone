@@ -5,6 +5,11 @@ Driver driverFromJson(String str) => Driver.fromJson(json.decode(str));
 String driverToJson(Driver data) => json.encode(data.toJson());
 
 class Driver {
+  String? id;
+  String? username;
+  String? email;
+  String? password;
+  String? plate;
   Driver({
     this.id,
     this.username,
@@ -12,12 +17,6 @@ class Driver {
     this.password,
     this.plate,
   });
-
-  String? id;
-  String? username;
-  String? email;
-  String? password;
-  String? plate;
 
   factory Driver.fromJson(Map<String, dynamic> json) => Driver(
         id: json["id"],

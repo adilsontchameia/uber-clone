@@ -33,7 +33,8 @@ class DriverProvider {
     DocumentSnapshot document = await _ref!.doc(id).get();
 
     if (document.exists) {
-      Driver driver = Driver.fromJson(document.data() as Map<String, dynamic>);
+      Driver driver =
+          Driver.fromJson(document.data().toString() as Map<String, dynamic>);
       return driver;
     }
 

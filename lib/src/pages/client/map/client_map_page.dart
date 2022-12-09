@@ -15,7 +15,6 @@ class _ClientMapPageState extends State<ClientMapPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
@@ -25,7 +24,6 @@ class _ClientMapPageState extends State<ClientMapPage> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     print('SE EJECUTO EL DISPOSE');
     _con.dispose();
@@ -70,10 +68,10 @@ class _ClientMapPageState extends State<ClientMapPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   child: Text(
-                    _con.client!.username!,
-                    style: const TextStyle(
+                    '_con.client.username.toString()',
+                    style: TextStyle(
                         fontSize: 18,
                         color: Colors.black,
                         fontWeight: FontWeight.bold),
@@ -82,7 +80,7 @@ class _ClientMapPageState extends State<ClientMapPage> {
                 ),
                 SizedBox(
                   child: Text(
-                    _con.client!.email!,
+                    '_con.client.email.toString()',
                     style: TextStyle(
                         fontSize: 14,
                         color: Colors.grey[800],

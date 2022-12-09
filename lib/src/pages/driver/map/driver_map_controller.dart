@@ -59,7 +59,8 @@ class DriverMapController {
     Stream<DocumentSnapshot> driverStream =
         _driverProvider!.getByIdStream(_authProvider!.getUser().uid);
     _driverInfoSuscription = driverStream.listen((DocumentSnapshot document) {
-      driver = Driver.fromJson(document.data() as Map<String, dynamic>);
+      driver =
+          Driver.fromJson(document.data().toString() as Map<String, dynamic>);
       refresh!();
     });
   }

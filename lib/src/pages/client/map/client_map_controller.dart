@@ -42,7 +42,7 @@ class ClientMapController {
   StreamSubscription<DocumentSnapshot>? _statusSuscription;
   StreamSubscription<DocumentSnapshot>? _clientInfoSubscription;
 
-  Client? client;
+  Client client = Client();
 
   Future init(BuildContext context, Function refresh) async {
     this.context = context;
@@ -51,6 +51,7 @@ class ClientMapController {
     _authProvider = AuthProvider();
     _driverProvider = DriverProvider();
     _clientProvider = ClientProvider();
+
     _progressDialog =
         MyProgressDialog.createProgressDialog(context, 'Conectandose...');
     markerDriver = await createMarkerImageFromAsset('assets/img/taxi_icon.png');
@@ -62,7 +63,9 @@ class ClientMapController {
     Stream<DocumentSnapshot> clientStream =
         _clientProvider!.getByIdStream(_authProvider!.getUser().uid);
     _clientInfoSubscription = clientStream.listen((DocumentSnapshot document) {
-      client = Client.fromJson(document.data() as Map<String, dynamic>);
+      client =
+          Client.fromJson(document.data.toString() as Map<String, dynamic>);
+
       refresh!();
     });
   }
