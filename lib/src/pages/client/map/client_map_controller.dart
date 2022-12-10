@@ -47,6 +47,7 @@ class ClientMapController {
   Future init(BuildContext context, Function refresh) async {
     this.context = context;
     this.refresh = refresh;
+    client = Client();
     _geofireProvider = GeofireProvider();
     _authProvider = AuthProvider();
     _driverProvider = DriverProvider();
@@ -63,8 +64,7 @@ class ClientMapController {
     Stream<DocumentSnapshot> clientStream =
         _clientProvider!.getByIdStream(_authProvider!.getUser().uid);
     _clientInfoSubscription = clientStream.listen((DocumentSnapshot document) {
-      client =
-          Client.fromJson(document.data.toString() as Map<String, dynamic>);
+      client = Client.fromJson(document.data() as Map<String, dynamic>);
 
       refresh!();
     });

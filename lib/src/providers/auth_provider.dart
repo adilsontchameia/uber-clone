@@ -72,6 +72,8 @@ class AuthProvider {
   }
 
   Future<Future<List>> signOut() async {
-    return Future.wait([_firebaseAuth!.signOut()]);
+    return Future.wait([
+      _firebaseAuth!.signOut(),
+    ]);
   }
 }
