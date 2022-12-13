@@ -144,6 +144,7 @@ class ClientMapController {
           markerDriver!,
         );
       }
+      refresh!();
     });
   }
 

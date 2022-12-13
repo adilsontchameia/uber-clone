@@ -45,6 +45,7 @@ class DriverMapController {
   Future init(BuildContext context, Function refresh) async {
     this.context = context;
     this.refresh = refresh;
+    driver = Driver();
     _geofireProvider = GeofireProvider();
     _authProvider = AuthProvider();
     _driverProvider = DriverProvider();
@@ -59,7 +60,7 @@ class DriverMapController {
     Stream<DocumentSnapshot> driverStream =
         _driverProvider!.getByIdStream(_authProvider!.getUser().uid);
     _driverInfoSuscription = driverStream.listen((DocumentSnapshot document) {
-      driver = Driver.fromJson(document as Map<String, dynamic>);
+      driver = Driver.fromJson(document.data() as Map<String, dynamic>);
       refresh!();
     });
   }
@@ -125,7 +126,6 @@ class DriverMapController {
       await _determinePosition();
       _position = await Geolocator.getLastKnownPosition();
       centerPosition();
-      saveLocation();
 
       addMarker('driver', _position!.latitude, _position!.longitude,
           'Tu posicion', '', markerDriver!);
@@ -138,7 +138,6 @@ class DriverMapController {
         addMarker('driver', _position!.latitude, _position!.longitude,
             'Tu posicion', '', markerDriver!);
         animateCameraToPosition(_position!.latitude, _position!.longitude);
-        saveLocation();
         refresh!();
       });
     } catch (error) {
