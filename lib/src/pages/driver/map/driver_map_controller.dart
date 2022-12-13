@@ -126,6 +126,7 @@ class DriverMapController {
       await _determinePosition();
       _position = await Geolocator.getLastKnownPosition();
       centerPosition();
+      saveLocation();
 
       addMarker('driver', _position!.latitude, _position!.longitude,
           'Tu posicion', '', markerDriver!);
@@ -138,6 +139,7 @@ class DriverMapController {
         addMarker('driver', _position!.latitude, _position!.longitude,
             'Tu posicion', '', markerDriver!);
         animateCameraToPosition(_position!.latitude, _position!.longitude);
+        saveLocation();
         refresh!();
       });
     } catch (error) {
