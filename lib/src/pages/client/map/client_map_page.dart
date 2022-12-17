@@ -44,6 +44,7 @@ class _ClientMapPageState extends State<ClientMapPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     _buttonDrawer(),
+                    _cardGooglePlaces(),
                     _buttonCenterPosition(),
                   ],
                 ),
@@ -182,7 +183,53 @@ class _ClientMapPageState extends State<ClientMapPage> {
       onMapCreated: _con.onMapCreated,
       myLocationEnabled: false,
       myLocationButtonEnabled: false,
-      markers: Set<Marker>.of(_con.markers.values),
+      //markers: Set<Marker>.of(_con.markers.values),
+    );
+  }
+
+  Widget _cardGooglePlaces() {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width * 0.9,
+      child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Desde',
+                style: TextStyle(color: Colors.grey, fontSize: 10),
+              ),
+              Text(
+                _con.from ?? '',
+                style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold),
+                maxLines: 2,
+              ),
+              const SizedBox(height: 5),
+              Container(
+                  // width: double.infinity,
+                  child: const Divider(color: Colors.grey, height: 10)),
+              const SizedBox(height: 5),
+              const Text(
+                'Hasta',
+                style: TextStyle(color: Colors.grey, fontSize: 10),
+              ),
+              Text(
+                _con.to ?? '',
+                style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold),
+                maxLines: 2,
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 

@@ -44,17 +44,24 @@ class ClientMapController {
 
   Client client = Client();
 
+  String? from;
+  LatLng? fromLatLng;
+
+  String? to;
+  LatLng? toLatLng;
+
+  bool isFromSelected = true;
+
   Future init(BuildContext context, Function refresh) async {
     this.context = context;
     this.refresh = refresh;
-    client = Client();
     _geofireProvider = GeofireProvider();
     _authProvider = AuthProvider();
     _driverProvider = DriverProvider();
     _clientProvider = ClientProvider();
     _progressDialog =
         MyProgressDialog.createProgressDialog(context, 'Conectandose...');
-    markerDriver = await createMarkerImageFromAsset('assets/img/taxi_icon.png');
+    markerDriver = await createMarkerImageFromAsset('assets/img/icon_taxi.png');
     checkGPS();
     getClientInfo();
   }
@@ -74,9 +81,9 @@ class ClientMapController {
   }
 
   void dispose() {
-    _positionStream!.cancel();
-    _statusSuscription!.cancel();
-    _clientInfoSubscription!.cancel();
+    _positionStream?.cancel();
+    _statusSuscription?.cancel();
+    _clientInfoSubscription?.cancel();
   }
 
   void signOut() async {
@@ -96,29 +103,54 @@ class ClientMapController {
       _position = await Geolocator.getLastKnownPosition();
       centerPosition();
       getNearbyDrivers();
-      addMarker('driver', _position!.latitude, _position!.longitude,
-          'Tu posicion', '', markerDriver!);
-      refresh!();
-
-      _positionStream = Geolocator.getPositionStream(
-              desiredAccuracy: LocationAccuracy.best, distanceFilter: 1)
-          .listen((Position position) {
-        _position = position;
-        addMarker('driver', _position!.latitude, _position!.longitude,
-            'Tu posicion', '', markerDriver!);
-        animateCameraToPosition(_position!.latitude, _position!.longitude);
-        refresh!();
-      });
     } catch (error) {
       print('Error en la localizacion: $error');
     }
   }
 
+  void changeFromTO() {
+    isFromSelected = !isFromSelected;
+
+    if (isFromSelected) {
+      utils.Snackbar.showSnackbar(
+          context!, key, 'Estas seleccionando el lugar de recogida');
+    } else {
+      utils.Snackbar.showSnackbar(
+          context!, key, 'Estas seleccionando el destino');
+    }
+  }
+
+  Future<void> setLocationDraggableInfo() async {
+    double lat = initialPosition.target.latitude;
+    double lng = initialPosition.target.longitude;
+
+    List<Placemark> address = await placemarkFromCoordinates(lat, lng);
+
+    if (address.isNotEmpty) {
+      String direction = address[0].thoroughfare;
+      String street = address[0].subThoroughfare;
+      String city = address[0].locality;
+      String department = address[0].administrativeArea;
+      String country = address[0].country;
+
+      if (isFromSelected) {
+        from = '$direction #$street, $city, $department';
+        fromLatLng = LatLng(lat, lng);
+      } else {
+        to = '$direction #$street, $city, $department';
+        toLatLng = LatLng(lat, lng);
+      }
+
+      refresh!();
+    }
+  }
+
   void getNearbyDrivers() {
     Stream<List<DocumentSnapshot>> stream = _geofireProvider!
-        .getNearbyDrivers(_position!.latitude, _position!.longitude, 10);
+        .getNearbyDrivers(_position!.latitude, _position!.longitude, 50);
+
     stream.listen((List<DocumentSnapshot> documentList) {
-      //vai retornar marker ID
+//vai retornar marker ID
       for (MarkerId m in markers.keys) {
         bool remove = true;
         //Todos condutores de condutores perto
@@ -202,7 +234,7 @@ class ClientMapController {
   Future animateCameraToPosition(double latitude, double longitude) async {
     GoogleMapController controller = await _mapController.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-        bearing: 0, target: LatLng(latitude, longitude), zoom: 17)));
+        bearing: 0, target: LatLng(latitude, longitude), zoom: 13)));
   }
 
   Future<BitmapDescriptor> createMarkerImageFromAsset(String path) async {
