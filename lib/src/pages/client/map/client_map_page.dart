@@ -42,6 +42,7 @@ class _ClientMapPageState extends State<ClientMapPage> {
               children: [
                 _buttonDrawer(),
                 _cardGooglePlaces(),
+                _buttonChangeTo(),
                 _buttonCenterPosition(),
                 Expanded(child: Container()),
                 _buttonRequest()
@@ -135,6 +136,29 @@ class _ClientMapPageState extends State<ClientMapPage> {
             padding: const EdgeInsets.all(10),
             child: Icon(
               Icons.location_searching,
+              color: Colors.grey[600],
+              size: 20,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buttonChangeTo() {
+    return GestureDetector(
+      onTap: _con.changeFromTO,
+      child: Container(
+        alignment: Alignment.centerRight,
+        margin: const EdgeInsets.symmetric(horizontal: 5),
+        child: Card(
+          shape: const CircleBorder(),
+          color: Colors.white,
+          elevation: 4.0,
+          child: Container(
+            padding: const EdgeInsets.all(10),
+            child: Icon(
+              Icons.refresh,
               color: Colors.grey[600],
               size: 20,
             ),

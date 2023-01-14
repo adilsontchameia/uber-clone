@@ -131,32 +131,19 @@ class ClientMapController {
       String? city = address[0].locality;
       String? department = address[0].administrativeArea;
       String? country = address[0].country;
-      from = '$direction #$street, $city, $department';
-      fromLatLng = LatLng(lat, lng);
-      print('FROM: $from');
-      refresh!();
-    }
-
-    /*
-    if (address.isNotEmpty) {
-      String? direction = address[0].thoroughfare;
-      String? street = address[0].subThoroughfare;
-      String? city = address[0].locality;
-      String? department = address[0].administrativeArea;
-      String? country = address[0].country;
 
       if (isFromSelected) {
         from = '$direction #$street, $city, $department';
         fromLatLng = LatLng(lat, lng);
+        print('FROM: $from');
       } else {
         to = '$direction #$street, $city, $department';
         toLatLng = LatLng(lat, lng);
+        print('FROM: $from');
       }
 
       refresh!();
     }
-  
-  */
   }
 
   void getNearbyDrivers() {
