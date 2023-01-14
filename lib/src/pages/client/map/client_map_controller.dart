@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart' as location;
@@ -123,15 +124,26 @@ class ClientMapController {
   Future<void> setLocationDraggableInfo() async {
     double lat = initialPosition.target.latitude;
     double lng = initialPosition.target.longitude;
-
     List<Placemark> address = await placemarkFromCoordinates(lat, lng);
-
     if (address.isNotEmpty) {
-      String direction = address[0].thoroughfare;
-      String street = address[0].subThoroughfare;
-      String city = address[0].locality;
-      String department = address[0].administrativeArea;
-      String country = address[0].country;
+      String? direction = address[0].thoroughfare;
+      String? street = address[0].subThoroughfare;
+      String? city = address[0].locality;
+      String? department = address[0].administrativeArea;
+      String? country = address[0].country;
+      from = '$direction #$street, $city, $department';
+      fromLatLng = LatLng(lat, lng);
+      print('FROM: $from');
+      refresh!();
+    }
+
+    /*
+    if (address.isNotEmpty) {
+      String? direction = address[0].thoroughfare;
+      String? street = address[0].subThoroughfare;
+      String? city = address[0].locality;
+      String? department = address[0].administrativeArea;
+      String? country = address[0].country;
 
       if (isFromSelected) {
         from = '$direction #$street, $city, $department';
@@ -143,6 +155,8 @@ class ClientMapController {
 
       refresh!();
     }
+  
+  */
   }
 
   void getNearbyDrivers() {

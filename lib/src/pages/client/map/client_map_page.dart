@@ -40,14 +40,9 @@ class _ClientMapPageState extends State<ClientMapPage> {
           SafeArea(
             child: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    _buttonDrawer(),
-                    _cardGooglePlaces(),
-                    _buttonCenterPosition(),
-                  ],
-                ),
+                _buttonDrawer(),
+                _cardGooglePlaces(),
+                _buttonCenterPosition(),
                 Expanded(child: Container()),
                 _buttonRequest()
               ],
@@ -183,7 +178,13 @@ class _ClientMapPageState extends State<ClientMapPage> {
       onMapCreated: _con.onMapCreated,
       myLocationEnabled: false,
       myLocationButtonEnabled: false,
-      //markers: Set<Marker>.of(_con.markers.values),
+      markers: Set<Marker>.of(_con.markers.values),
+      onCameraIdle: () async {
+        await _con.setLocationDraggableInfo();
+      },
+      onCameraMove: (position) {
+        _con.initialPosition = position;
+      },
     );
   }
 
@@ -210,9 +211,7 @@ class _ClientMapPageState extends State<ClientMapPage> {
                 maxLines: 2,
               ),
               const SizedBox(height: 5),
-              Container(
-                  // width: double.infinity,
-                  child: const Divider(color: Colors.grey, height: 10)),
+              const SizedBox(child: Divider(color: Colors.grey, height: 10)),
               const SizedBox(height: 5),
               const Text(
                 'Hasta',
