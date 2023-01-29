@@ -16,10 +16,12 @@ void main() async {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
-  _MyAppState createState() => _MyAppState();
+  State<MyApp> createState() {
+    return _MyAppState();
+  }
 }
 
 class _MyAppState extends State<MyApp> {
@@ -36,10 +38,10 @@ class _MyAppState extends State<MyApp> {
       routes: {
         'home': (BuildContext context) => const HomePage(),
         'login': (BuildContext context) => const LoginPage(),
-        'client/register': (BuildContext context) => ClientRegisterPage(),
-        'driver/register': (BuildContext context) => DriverRegisterPage(),
+        'client/register': (BuildContext context) => const ClientRegisterPage(),
+        'driver/register': (BuildContext context) => const DriverRegisterPage(),
         'driver/map': (BuildContext context) => const DriverMapPage(),
-        'client/map': (BuildContext context) => ClientMapPage(),
+        'client/map': (BuildContext context) => const ClientMapPage(),
       },
     );
   }

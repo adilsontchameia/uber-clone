@@ -29,30 +29,26 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  cloud_firestore: any
+  cupertino_icons: ^1.0.2
+  firebase_auth: any
+  firebase_core: any
   flutter:
     sdk: flutter
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  
-  cupertino_icons: ^1.0.2
   flutter_custom_clippers: ^2.0.0
-  firebase_auth: ^4.0.0
-  firebase_core: ^2.3.0
-  cloud_firestore: ^4.0.0
+  flutter_google_places: any
+  geocoder2: ^1.4.0
+  geocoding: any
+  geoflutterfire2: any
+  geolocator: any
+  google_maps_flutter: any
+  location: any
   progress_dialog_null_safe: ^1.0.7
   shared_preferences: ^2.0.0
-  google_maps_flutter: ^2.2.1
-  geolocator: ^7.0.0
-  location: ^4.4.0
-  geoflutterfire2: ^2.2.2
-  
+
 dependency_overrides:
   firebase_core_platform_interface: 4.5.2
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -60,10 +56,11 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter packages.
 flutter:
 
@@ -76,13 +73,10 @@ flutter:
   assets:
     - assets/img/
   #   - images/a_dot_ham.jpeg
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
@@ -101,7 +95,6 @@ flutter:
     - family: OneDay
       fonts:
         - asset: assets/fonts/OneDay/ONEDAY.ttf
-
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf

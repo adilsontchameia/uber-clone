@@ -7,8 +7,12 @@ import '../../../widgets/button_app.dart';
 import 'client_register_controller.dart';
 
 class ClientRegisterPage extends StatefulWidget {
+  const ClientRegisterPage({super.key});
+
   @override
-  _ClientRegisterPageState createState() => _ClientRegisterPageState();
+  State<ClientRegisterPage> createState() {
+    return _ClientRegisterPageState();
+  }
 }
 
 class _ClientRegisterPageState extends State<ClientRegisterPage> {
@@ -16,9 +20,8 @@ class _ClientRegisterPageState extends State<ClientRegisterPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    print('INIT STATE');
+    debugPrint('INIT STATE');
 
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
       _con.init(context);
@@ -27,7 +30,7 @@ class _ClientRegisterPageState extends State<ClientRegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    print('METODO BUILD');
+    debugPrint('METODO BUILD');
 
     return Scaffold(
       key: _con.key,

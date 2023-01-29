@@ -8,7 +8,9 @@ class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() {
+    return _HomePageState();
+  }
 }
 
 class _HomePageState extends State<HomePage> {

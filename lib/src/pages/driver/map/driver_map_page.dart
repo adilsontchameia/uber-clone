@@ -9,7 +9,9 @@ class DriverMapPage extends StatefulWidget {
   const DriverMapPage({super.key});
 
   @override
-  _DriverMapPageState createState() => _DriverMapPageState();
+  State<DriverMapPage> createState() {
+    return _DriverMapPageState();
+  }
 }
 
 class _DriverMapPageState extends State<DriverMapPage> {

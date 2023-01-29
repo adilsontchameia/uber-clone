@@ -8,8 +8,12 @@ import '../../../widgets/button_app.dart';
 import 'driver_register_controller.dart';
 
 class DriverRegisterPage extends StatefulWidget {
+  const DriverRegisterPage({super.key});
+
   @override
-  _DriverRegisterPageState createState() => _DriverRegisterPageState();
+  State<DriverRegisterPage> createState() {
+    return _DriverRegisterPageState();
+  }
 }
 
 class _DriverRegisterPageState extends State<DriverRegisterPage> {
@@ -17,9 +21,8 @@ class _DriverRegisterPageState extends State<DriverRegisterPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    print('INIT STATE');
+    debugPrint('INIT STATE');
 
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
       _con.init(context);
@@ -28,7 +31,7 @@ class _DriverRegisterPageState extends State<DriverRegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    print('METODO BUILD');
+    debugPrint('METODO BUILD');
 
     return Scaffold(
       key: _con.key,

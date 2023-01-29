@@ -35,8 +35,7 @@ class LoginController {
     _sharedPref = SharedPref();
     _typeUser = await _sharedPref!.read('typeUser');
 
-    //print('============== TIPO DE USUARIO===============');
-    print(_typeUser);
+    debugPrint(_typeUser);
   }
 
   void goToRegisterPage() {
@@ -51,8 +50,8 @@ class LoginController {
     String email = emailController.text.trim();
     String password = passwordController.text.trim();
 
-    //print('Email: $email');
-    //print('Password: $password');
+    //debugPrint('Email: $email');
+    //debugPrint('Password: $password');
 
     _progressDialog!.show();
 
@@ -61,19 +60,19 @@ class LoginController {
       _progressDialog!.hide();
 
       if (isLogin != null) {
-        print('El usuario esta logeado');
+        debugPrint('El usuario esta logeado');
 
         if (_typeUser == 'client') {
           Client? client =
               await _clientProvider!.getById(_authProvider!.getUser().uid);
-          //print('CLIENT: $client');
+          //debugPrint('CLIENT: $client');
 
           if (client != null) {
-            //print('El cliente no es nulo');
+            //debugPrint('El cliente no es nulo');
             Navigator.pushNamedAndRemoveUntil(
                 context!, 'client/map', (route) => false);
           } else {
-            // print('El cliente si es nulo');
+            // debugPrint('El cliente si es nulo');
             utils.Snackbar.showSnackbar(
                 context!, key, 'El usuario no es valido');
             await _authProvider!.signOut();
@@ -81,7 +80,7 @@ class LoginController {
         } else if (_typeUser == 'driver') {
           Driver? driver =
               await _driverProvider!.getById(_authProvider!.getUser().uid);
-          //print('DRIVER: $driver');
+          //debugPrint('DRIVER: $driver');
 
           if (driver != null) {
             Navigator.pushNamedAndRemoveUntil(
@@ -95,12 +94,12 @@ class LoginController {
       } else {
         utils.Snackbar.showSnackbar(
             context!, key, 'El usuario no se pudo autenticar');
-        //print('El usuario no se pudo autenticar');
+        //debugPrint('El usuario no se pudo autenticar');
       }
     } catch (error) {
       utils.Snackbar.showSnackbar(context!, key, 'Error : $error');
       _progressDialog!.hide();
-      //print('Error: $error');
+      //debugPrint('Error: $error');
     }
   }
 }

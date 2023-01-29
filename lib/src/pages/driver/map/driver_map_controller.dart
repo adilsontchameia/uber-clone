@@ -132,9 +132,14 @@ class DriverMapController {
           'Tu posicion', '', markerDriver!);
       refresh!();
 
-      _positionStream = Geolocator.getPositionStream(
-              desiredAccuracy: LocationAccuracy.best, distanceFilter: 1)
-          .listen((Position position) {
+      //LocationSettings
+      const LocationSettings locationSettings = LocationSettings(
+        accuracy: LocationAccuracy.best,
+        distanceFilter: 1,
+      );
+      _positionStream =
+          Geolocator.getPositionStream(locationSettings: locationSettings)
+              .listen((Position position) {
         _position = position;
         addMarker('driver', _position!.latitude, _position!.longitude,
             'Tu posicion', '', markerDriver!);
@@ -143,7 +148,7 @@ class DriverMapController {
         refresh!();
       });
     } catch (error) {
-      print('Error en la localizacion: $error');
+      debugPrint('Error en la localizacion: $error');
     }
   }
 
@@ -159,16 +164,16 @@ class DriverMapController {
   void checkGPS() async {
     bool isLocationEnabled = await Geolocator.isLocationServiceEnabled();
     if (isLocationEnabled) {
-      print('GPS ACTIVADO');
+      debugPrint('GPS ACTIVADO');
       updateLocation();
       checkIfIsConnect();
     } else {
-      print('GPS DESACTIVADO');
+      debugPrint('GPS DESACTIVADO');
       bool locationGPS = await location.Location().requestService();
       if (locationGPS) {
         updateLocation();
         checkIfIsConnect();
-        print('ACTIVO EL GPS');
+        debugPrint('ACTIVO EL GPS');
       }
     }
   }

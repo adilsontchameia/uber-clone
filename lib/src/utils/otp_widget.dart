@@ -32,7 +32,9 @@ class OTPFields extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _OTPFieldsState createState() => _OTPFieldsState();
+  State<OTPFields> createState() {
+    return _OTPFieldsState();
+  }
 }
 
 class _OTPFieldsState extends State<OTPFields> {

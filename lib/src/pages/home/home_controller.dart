@@ -22,7 +22,7 @@ class HomeController {
   void checkIfUserIsAuth() {
     bool isSigned = _authProvider!.isSignedIn();
     if (isSigned) {
-      print('SI ESTA LOEGADO');
+      debugPrint('SI ESTA LOEGADO');
       if (_typeUser == 'client') {
         Navigator.pushNamedAndRemoveUntil(
             context!, 'client/map', (route) => false);
@@ -31,7 +31,7 @@ class HomeController {
             context!, 'driver/map', (route) => false);
       }
     } else {
-      print('NO ESTA LOGEADO');
+      debugPrint('NO ESTA LOGEADO');
     }
   }
 

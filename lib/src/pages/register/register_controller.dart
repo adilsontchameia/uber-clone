@@ -27,33 +27,33 @@ class RegisterController {
         email.isEmpty &&
         password.isEmpty &&
         confirmPassword.isEmpty) {
-      print('Must fill all informations.');
+      debugPrint('Must fill all informations.');
       return;
     }
     //
     if (confirmPassword != password) {
-      print('The passwords are differents.');
+      debugPrint('The passwords are differents.');
       return;
     }
     //
     if (password.length < 6) {
-      print('The password is short, it must has more than 6 characteres.');
+      debugPrint('The password is short, it must has more than 6 characteres.');
     }
-    print('Username: $userName');
-    print('Email: $email');
-    print('Confirmed Password: $confirmPassword');
-    print('Password: $password');
+    debugPrint('Username: $userName');
+    debugPrint('Email: $email');
+    debugPrint('Confirmed Password: $confirmPassword');
+    debugPrint('Password: $password');
 
     try {
       Object? isRegistered = await _authProvider!.register(email, password);
       //Perguntar se fez login
       if (isRegistered != null) {
-        print('The user has sucessfully registered.');
+        debugPrint('The user has sucessfully registered.');
       } else {
-        print('The sign up process was failed.');
+        debugPrint('The sign up process was failed.');
       }
     } catch (error) {
-      print('Error: $error');
+      debugPrint('Error: $error');
     }
   }
 }

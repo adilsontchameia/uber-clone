@@ -6,8 +6,12 @@ import '../../../widgets/button_app.dart';
 import 'client_map_controller.dart';
 
 class ClientMapPage extends StatefulWidget {
+  const ClientMapPage({super.key});
+
   @override
-  _ClientMapPageState createState() => _ClientMapPageState();
+  State<ClientMapPage> createState() {
+    return _ClientMapPageState();
+  }
 }
 
 class _ClientMapPageState extends State<ClientMapPage> {
@@ -25,7 +29,7 @@ class _ClientMapPageState extends State<ClientMapPage> {
   @override
   void dispose() {
     super.dispose();
-    print('SE EJECUTO EL DISPOSE');
+    debugPrint('SE EJECUTO EL DISPOSE');
     _con.dispose();
   }
 
@@ -203,11 +207,12 @@ class _ClientMapPageState extends State<ClientMapPage> {
       myLocationEnabled: false,
       myLocationButtonEnabled: false,
       markers: Set<Marker>.of(_con.markers.values),
-      onCameraIdle: () async {
-        await _con.setLocationDraggableInfo();
-      },
       onCameraMove: (position) {
         _con.initialPosition = position;
+        debugPrint('ON CAMERA MOVE: $position');
+      },
+      onCameraIdle: () async {
+        await _con.setLocationDraggableInfo();
       },
     );
   }

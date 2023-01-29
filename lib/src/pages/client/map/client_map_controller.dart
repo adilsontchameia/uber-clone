@@ -23,7 +23,7 @@ class ClientMapController {
   final Completer<GoogleMapController> _mapController = Completer();
 
   CameraPosition initialPosition =
-      const CameraPosition(target: LatLng(1.2342774, -77.2645446), zoom: 14.0);
+      const CameraPosition(target: LatLng(-14.6594083, 17.698479), zoom: 14.0);
 
   Map<MarkerId, Marker> markers = <MarkerId, Marker>{};
 
@@ -105,7 +105,7 @@ class ClientMapController {
       centerPosition();
       getNearbyDrivers();
     } catch (error) {
-      print('Error en la localizacion: $error');
+      debugPrint('Error en la localizacion: $error');
     }
   }
 
@@ -135,11 +135,11 @@ class ClientMapController {
       if (isFromSelected) {
         from = '$direction #$street, $city, $department';
         fromLatLng = LatLng(lat, lng);
-        print('FROM: $from');
+        debugPrint('FROM: $from');
       } else {
         to = '$direction #$street, $city, $department';
         toLatLng = LatLng(lat, lng);
-        print('FROM: $from');
+        debugPrint('FROM: $from');
       }
 
       refresh!();
@@ -193,14 +193,14 @@ class ClientMapController {
   void checkGPS() async {
     bool isLocationEnabled = await Geolocator.isLocationServiceEnabled();
     if (isLocationEnabled) {
-      print('GPS ACTIVADO');
+      debugPrint('GPS ACTIVADO');
       updateLocation();
     } else {
-      print('GPS DESACTIVADO');
+      debugPrint('GPS DESACTIVADO');
       bool locationGPS = await location.Location().requestService();
       if (locationGPS) {
         updateLocation();
-        print('ACTIVO EL GPS');
+        debugPrint('ACTIVO EL GPS');
       }
     }
   }

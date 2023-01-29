@@ -33,9 +33,9 @@ class AuthProvider {
           Navigator.pushNamedAndRemoveUntil(
               context, 'driver/map', (route) => false);
         }
-        print('El usuario esta logeado');
+        debugPrint('El usuario esta logeado');
       } else {
-        print('El usuario no esta logeado');
+        debugPrint('El usuario no esta logeado');
       }
     });
   }
