@@ -62,7 +62,7 @@ class ClientMapController {
     _clientProvider = ClientProvider();
     _progressDialog =
         MyProgressDialog.createProgressDialog(context, 'Conectandose...');
-    markerDriver = await createMarkerImageFromAsset('assets/img/icon_taxi.png');
+    //markerDriver = await createMarkerImageFromAsset('assets/img/icon_taxi.png');
     checkGPS();
     getClientInfo();
   }

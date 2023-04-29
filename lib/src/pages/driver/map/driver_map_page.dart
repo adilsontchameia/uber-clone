@@ -107,7 +107,7 @@ class _DriverMapPageState extends State<DriverMapPage> {
             onTap: () {},
           ),
           ListTile(
-            title: const Text('Cerrar sesion'),
+            title: const Text('Cerrar Sesion'),
             trailing: const Icon(Icons.power_settings_new),
             // leading: Icon(Icons.cancel),
             onTap: _con.signOut,

@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "503611274938",
-    "project_id": "uber-clone-flutter-e44db",
-    "storage_bucket": "uber-clone-flutter-e44db.appspot.com"
+    "project_number": "990275683001",
+    "project_id": "uberclone-f3acb",
+    "storage_bucket": "uberclone-f3acb.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:503611274938:android:c16239c5ffa4d5f21a7483",
+        "mobilesdk_app_id": "1:990275683001:android:6c9bd5a2df89dd45f79168",
         "android_client_info": {
           "package_name": "com.example.uber_clone"
         }
       },
       "oauth_client": [
         {
-          "client_id": "503611274938-di8m18dhduqtes09k2rv4tb8m3kd5099.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.uber_clone",
-            "certificate_hash": "1076d5ea778eaca727c1ba3ab23e1156134b71c2"
-          }
-        },
-        {
-          "client_id": "503611274938-pm6ob8v4onk0fc1b7dtt2qvln1dq31i3.apps.googleusercontent.com",
+          "client_id": "990275683001-3qfhphn4udh6rqndd6a84btespl46grv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCD3eRKafEZoKQwOGdFrZnTdi2oUVNUuto"
+          "current_key": "AIzaSyC4M0k5ZYX_xU54d_9vpntjtR9pcWDtwz4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "503611274938-pm6ob8v4onk0fc1b7dtt2qvln1dq31i3.apps.googleusercontent.com",
+              "client_id": "990275683001-3qfhphn4udh6rqndd6a84btespl46grv.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

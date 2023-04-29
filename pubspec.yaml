@@ -47,7 +47,7 @@ dependencies:
   shared_preferences: ^2.0.0
 
 dependency_overrides:
-  firebase_core_platform_interface: 4.5.2
+  firebase_core_platform_interface: 4.5.1
 dev_dependencies:
 
   # The "flutter_lints" package below contains a set of recommended lints to
