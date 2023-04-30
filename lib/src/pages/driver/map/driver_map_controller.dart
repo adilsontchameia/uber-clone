@@ -21,7 +21,7 @@ class DriverMapController {
   final Completer<GoogleMapController> _mapController = Completer();
 
   CameraPosition initialPosition =
-      const CameraPosition(target: LatLng(1.2342774, -77.2645446), zoom: 14.0);
+      const CameraPosition(target: LatLng(-14.6594083, 17.698479), zoom: 14.0);
 
   Map<MarkerId, Marker> markers = <MarkerId, Marker>{};
 
@@ -128,8 +128,14 @@ class DriverMapController {
       centerPosition();
       saveLocation();
 
-      addMarker('driver', _position!.latitude, _position!.longitude,
-          'Tu posicion', '', markerDriver!);
+      addMarker(
+        'driver',
+        _position!.latitude,
+        _position!.longitude,
+        'Tu posicion',
+        '',
+        markerDriver!,
+      );
       refresh!();
 
       //LocationSettings
@@ -141,8 +147,14 @@ class DriverMapController {
           Geolocator.getPositionStream(locationSettings: locationSettings)
               .listen((Position position) {
         _position = position;
-        addMarker('driver', _position!.latitude, _position!.longitude,
-            'Tu posicion', '', markerDriver!);
+        addMarker(
+          'driver',
+          _position!.latitude,
+          _position!.longitude,
+          'Tu posicion',
+          '',
+          markerDriver!,
+        );
         animateCameraToPosition(_position!.latitude, _position!.longitude);
         saveLocation();
         refresh!();
@@ -208,7 +220,10 @@ class DriverMapController {
   Future animateCameraToPosition(double latitude, double longitude) async {
     GoogleMapController controller = await _mapController.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-        bearing: 0, target: LatLng(latitude, longitude), zoom: 17)));
+      bearing: 0,
+      target: LatLng(latitude, longitude),
+      zoom: 17,
+    )));
   }
 
   Future<BitmapDescriptor> createMarkerImageFromAsset(String path) async {
@@ -218,8 +233,14 @@ class DriverMapController {
     return bitmapDescriptor;
   }
 
-  void addMarker(String markerId, double lat, double lng, String title,
-      String content, BitmapDescriptor iconMarker) {
+  void addMarker(
+    String markerId,
+    double lat,
+    double lng,
+    String title,
+    String content,
+    BitmapDescriptor iconMarker,
+  ) {
     MarkerId id = MarkerId(markerId);
     Marker marker = Marker(
         markerId: id,
