@@ -29,7 +29,7 @@ class _DriverMapPageState extends State<DriverMapPage> {
   @override
   void dispose() {
     super.dispose();
-    //print('SE EJECUTO EL DISPOSE');
+    _con.disconnect();
     _con.dispose();
   }
 
