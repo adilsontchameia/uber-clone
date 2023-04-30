@@ -62,7 +62,7 @@ class ClientMapController {
     _clientProvider = ClientProvider();
     _progressDialog =
         MyProgressDialog.createProgressDialog(context, 'Conectandose...');
-    //markerDriver = await createMarkerImageFromAsset('assets/img/icon_taxi.png');
+    markerDriver = await createMarkerImageFromAsset('assets/img/taxi_icon.png');
     checkGPS();
     getClientInfo();
   }
@@ -104,6 +104,7 @@ class ClientMapController {
       _position = await Geolocator.getLastKnownPosition();
       centerPosition();
       getNearbyDrivers();
+      refresh!();
     } catch (error) {
       debugPrint('Error en la localizacion: $error');
     }
@@ -148,32 +149,35 @@ class ClientMapController {
 
   void getNearbyDrivers() {
     Stream<List<DocumentSnapshot>> stream = _geofireProvider!
-        .getNearbyDrivers(_position!.latitude, _position!.longitude, 50);
+        .getNearbyDrivers(_position!.latitude, _position!.longitude, 10);
 
-    stream.listen((List<DocumentSnapshot> documentList) {
-//vai retornar marker ID
-      for (MarkerId m in markers.keys) {
-        bool remove = true;
-        //Todos condutores de condutores perto
-        for (DocumentSnapshot d in documentList) {
-          if (m.value == d.id) {
-            remove = false;
+    stream.listen((event) {
+      MarkerId? delete;
+      for (MarkerId markerId in markers.keys) {
+        bool remover = true;
+        for (DocumentSnapshot d in event) {
+          if (markerId.value == d.id) {
+            remover = false;
           }
         }
-        if (remove) {
-          markers.remove(m);
-          refresh!();
-        }
+        delete = remover ? markerId : null;
       }
-      for (DocumentSnapshot d in documentList) {
-        Map<String, dynamic> vara = d.get('position');
-        GeoPoint point = vara['geopoint'];
+
+      if (delete != null) {
+        markers.remove(delete);
+        refresh!();
+      }
+
+      for (DocumentSnapshot d in event) {
+        final dFormat = d.data() as Map<String, dynamic>;
+        GeoPoint point = dFormat['position']['geopoint'];
+
         addMarker(
           d.id,
           point.latitude,
           point.longitude,
-          'Condutor Disponivel',
-          'Content',
+          'Disponible',
+          '',
           markerDriver!,
         );
       }
