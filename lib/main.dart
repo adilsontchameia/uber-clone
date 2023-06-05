@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:uber_clone/src/pages/destination_screen.dart';
 
 import 'firebase_options.dart';
 import 'src/pages/client/map/client_map_page.dart';
@@ -31,7 +33,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Uber Clone',
       initialRoute: 'home',
@@ -46,6 +48,7 @@ class _MyAppState extends State<MyApp> {
         'driver/register': (BuildContext context) => const DriverRegisterPage(),
         'driver/map': (BuildContext context) => const DriverMapPage(),
         'client/map': (BuildContext context) => const ClientMapPage(),
+        'client/travel/info': (BuildContext context) => const DestinationPage(),
       },
     );
   }

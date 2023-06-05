@@ -75,7 +75,7 @@ class _ClientMapPageState extends State<ClientMapPage> {
               children: [
                 SizedBox(
                   child: Text(
-                    _con.client.username.toString(),
+                    _con.client!.username.toString(),
                     style: const TextStyle(
                         fontSize: 18,
                         color: Colors.black,
@@ -85,7 +85,7 @@ class _ClientMapPageState extends State<ClientMapPage> {
                 ),
                 SizedBox(
                   child: Text(
-                    _con.client.email.toString(),
+                    _con.client!.email.toString(),
                     style: TextStyle(
                         fontSize: 14,
                         color: Colors.grey[800],
@@ -200,15 +200,17 @@ class _ClientMapPageState extends State<ClientMapPage> {
   }
 
   Widget _googleMapsWidget() {
+    CameraPosition initialPosition = const CameraPosition(
+        target: LatLng(-14.6594083, 17.698479), zoom: 15.4746);
     return GoogleMap(
       mapType: MapType.normal,
-      initialCameraPosition: _con.initialPosition,
+      initialCameraPosition: initialPosition,
       onMapCreated: _con.onMapCreated,
       myLocationEnabled: false,
       myLocationButtonEnabled: false,
       markers: Set<Marker>.of(_con.markers.values),
       onCameraMove: (position) {
-        _con.initialPosition = position;
+        initialPosition = position;
         debugPrint('ON CAMERA MOVE: $position');
       },
       onCameraIdle: () async {

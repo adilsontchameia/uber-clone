@@ -11,7 +11,7 @@ class DriverProvider {
   }
 
   Future<void>? create(Driver driver) {
-    String errorMessage;
+    String? errorMessage;
 
     try {
       return _ref!.doc(driver.id).set(driver.toJson());

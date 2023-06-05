@@ -43,7 +43,7 @@ class ClientMapController {
   StreamSubscription<DocumentSnapshot>? _statusSuscription;
   StreamSubscription<DocumentSnapshot>? _clientInfoSubscription;
 
-  Client client = Client();
+  Client? client;
 
   String? from;
   LatLng? fromLatLng;
@@ -72,7 +72,6 @@ class ClientMapController {
         _clientProvider!.getByIdStream(_authProvider!.getUser().uid);
     _clientInfoSubscription = clientStream.listen((DocumentSnapshot document) {
       client = Client.fromJson(document.data() as Map<String, dynamic>);
-
       refresh!();
     });
   }
@@ -82,9 +81,9 @@ class ClientMapController {
   }
 
   void dispose() {
-    _positionStream?.cancel();
-    _statusSuscription?.cancel();
-    _clientInfoSubscription?.cancel();
+    _positionStream!.cancel();
+    _statusSuscription!.cancel();
+    _clientInfoSubscription!.cancel();
   }
 
   void signOut() async {
@@ -101,12 +100,11 @@ class ClientMapController {
   void updateLocation() async {
     try {
       await _determinePosition();
-      _position = await Geolocator.getLastKnownPosition();
+      _position = await Geolocator.getLastKnownPosition(); // UNA VEZ
       centerPosition();
       getNearbyDrivers();
-      refresh!();
     } catch (error) {
-      debugPrint('Error en la localizacion: $error');
+      print('Error en la localizacion: $error');
     }
   }
 
@@ -125,22 +123,22 @@ class ClientMapController {
   Future<void> setLocationDraggableInfo() async {
     double lat = initialPosition.target.latitude;
     double lng = initialPosition.target.longitude;
+
     List<Placemark> address = await placemarkFromCoordinates(lat, lng);
+
     if (address.isNotEmpty) {
-      String? direction = address[0].thoroughfare;
-      String? street = address[0].subThoroughfare;
-      String? city = address[0].locality;
-      String? department = address[0].administrativeArea;
-      String? country = address[0].country;
+      String direction = address[0].thoroughfare!;
+      String street = address[0].subThoroughfare!;
+      String city = address[0].locality!;
+      String department = address[0].administrativeArea!;
+      String country = address[0].country!;
 
       if (isFromSelected) {
         from = '$direction #$street, $city, $department';
         fromLatLng = LatLng(lat, lng);
-        debugPrint('FROM: $from');
       } else {
         to = '$direction #$street, $city, $department';
         toLatLng = LatLng(lat, lng);
-        debugPrint('FROM: $from');
       }
 
       refresh!();
@@ -197,14 +195,14 @@ class ClientMapController {
   void checkGPS() async {
     bool isLocationEnabled = await Geolocator.isLocationServiceEnabled();
     if (isLocationEnabled) {
-      debugPrint('GPS ACTIVADO');
+      print('GPS ACTIVADO');
       updateLocation();
     } else {
-      debugPrint('GPS DESACTIVADO');
+      print('GPS DESACTIVADO');
       bool locationGPS = await location.Location().requestService();
       if (locationGPS) {
         updateLocation();
-        debugPrint('ACTIVO EL GPS');
+        print('ACTIVO EL GPS');
       }
     }
   }
