@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import '../../../utils/map_styles.dart';
 import '../../../widgets/button_app.dart';
 import 'client_map_controller.dart';
 
@@ -205,7 +208,10 @@ class _ClientMapPageState extends State<ClientMapPage> {
     return GoogleMap(
       mapType: MapType.normal,
       initialCameraPosition: initialPosition,
-      onMapCreated: _con.onMapCreated,
+      onMapCreated: (GoogleMapController controller) {
+        _con.setMapController(controller);
+        controller.setMapStyle(jsonEncode(uberMapStyle));
+      },
       myLocationEnabled: false,
       myLocationButtonEnabled: false,
       markers: Set<Marker>.of(_con.markers.values),
